@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.transformer</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-RELEASE</version>
+	</parent>	
+	<groupId>org.transformer.user</groupId>
+	<artifactId>parent</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>user-center-parent</name>	
+	<properties>
+		<!-- 主要依赖库的版本定义 -->		
+		<project.version>1.0-SNAPSHOT</project.version>	
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+		
+			<dependency>
+	    		<groupId>org.transformer</groupId>
+	    		<artifactId>transofrmer-dubbo-support</artifactId>
+  			</dependency>
+  			
+  			<dependency>
+	    		<groupId>org.transformer.user</groupId>
+	    		<artifactId>user-center-enum</artifactId>
+	    		<version>${project.version}</version>
+  			</dependency>
+  			
+  			<dependency>
+	    		<groupId>org.transformer.user</groupId>
+	    		<artifactId>user-center-core</artifactId>
+	    		<version>${project.version}</version>
+  			</dependency>
+  			
+			<dependency>
+	    		<groupId>org.transformer.user</groupId>
+	    		<artifactId>user-center-dao</artifactId>
+	    		<version>${project.version}</version>
+  			</dependency>
+  			
+  			<dependency>
+	    		<groupId>org.transformer.user</groupId>
+	    		<artifactId>user-center-service</artifactId>
+	    		<version>${project.version}</version>
+  			</dependency>
+  			
+  			<dependency>
+				<groupId>org.transformer.user</groupId>
+				<artifactId>user-center-rpc-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+			<dependency>
+        		<groupId>org.transformer.user</groupId>
+       			<artifactId>user-center-rpc-provider</artifactId>
+       			<version>${project.version}</version>
+    		</dependency>
+  			
+  		</dependencies>
+  	</dependencyManagement>
+</project>

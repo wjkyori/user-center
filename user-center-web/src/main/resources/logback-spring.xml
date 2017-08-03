@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<configuration>
+    <!-- <include resource="org/springframework/boot/logging/logback/base.xml"/> -->
+    <!-- 控制台输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- info 文件日志输出 -->
+    <appender name="info"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/home/logs/user-center-web/info-${PID}.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>/home/logs/user-center-web/info-${PID}-%d{yyyy-MM-dd-HH}.log</FileNamePattern>
+            <MaxHistory>720</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>[%-5level] ${PID} %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+
+    <!-- ch.qos.logback.core.rolling.RollingFileAppender 文件日志输出 -->
+    <appender name="error"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>/home/logs/user-center-web/error-${PID}.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>/home/logs/user-center-web/error-${PID}-%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n
+            </pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印错误日志 -->
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <logger name="org.transformer" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="console"/>
+    </logger>
+
+    <!-- 日志级别 -->
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="info"/>
+        <appender-ref ref="error"/>
+    </root>
+
+</configuration>

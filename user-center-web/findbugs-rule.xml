@@ -1,0 +1,12 @@
+<FindBugsFilter>
+    <Match>
+        <Bug category="CORRECTNESS,MT_CORRECTNESS,SECURITY,PERFORMANCE,MALICIOUS_CODE,STYLE,BAD_PRACTICE"/>
+        <Package name="~.+"/>
+        <Not>
+            <Bug pattern="EI_EXPOSE_REP"/>
+        </Not>
+        <Not>
+            <Bug pattern="EI_EXPOSE_REP2"/>
+        </Not>
+    </Match>
+</FindBugsFilter>
